@@ -22,7 +22,7 @@
     <div class="flex space-x-2">
         <button type="button" @click="addOption" class="bg-blue-500 text-white px-3 py-1 rounded">Add Option</button>
         <button type="button" @click="removeOption" class="bg-gray-500 text-white px-3 py-1 rounded">Remove Last</button>
-        <button type="button" @click="$wire.$refresh" class="bg-green-500 text-white px-3 py-1 rounded">Save</button>
+        <button type="button" @click="$wire.$refresh" class="bg-green-500 text-white px-3 py-1 rounded">Refresh</button>
     </div>
 </div>
 
@@ -32,7 +32,7 @@
             return {
                 options: [],
                 init() {
-                    this.options = this.$wire.form.options
+                    this.options = this.$wire.$clone(this.$wire.form.options)
                 },
                 addOption() {
                     this.options.push({
